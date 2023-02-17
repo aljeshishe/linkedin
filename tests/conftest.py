@@ -2,4 +2,4 @@
 
 # pylint: disable=unused-import
 
-from glassdoor.tests.conftest import pytest_configure
+from linkedin.tests.conftest import pytest_configure

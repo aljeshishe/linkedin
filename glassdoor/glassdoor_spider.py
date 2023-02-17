@@ -2,16 +2,15 @@ import logging
 
 import scrapy
 # v.platformTrust = lambda: None
-from glassdoor.request import GetCsrfRequest
+from linkedin.request import GetCsrfRequest
 
-from glassdoor.state import State
+from linkedin.state import State
 
 log = logging.getLogger(__name__)
 
 
-class GlassdoorSpider(scrapy.Spider):
-    name = 'airbnb'
-    url = "https://www.glassdoor.com/graph"
+class LinkedinSpider(scrapy.Spider):
+    url = "https://www.linkedin.com/graph"
 
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)

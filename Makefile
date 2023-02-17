@@ -1,5 +1,5 @@
-PROJECT := glassdoor
-PACKAGE := glassdoor
+PROJECT := linkedin
+PACKAGE := linkedin
 MODULES := $(wildcard $(PACKAGE)/*.py)
 
 .PHONY: repo-init

@@ -1,8 +1,8 @@
 LOG_LEVEL = "INFO"
-BOT_NAME = "glassdoor_spider"
+BOT_NAME = "linkedin_spider"
 
-# SPIDER_MODULES = ["glassdoor_spider"]
-# NEWSPIDER_MODULE = "glassdoor_spider"
+# SPIDER_MODULES = ["linkedin_spider"]
+# NEWSPIDER_MODULE = "linkedin_spider"
 
 CONCURRENT_REQUESTS_PER_DOMAIN = 5
 CONCURRENT_REQUESTS_PER_IP = 5
@@ -24,7 +24,7 @@ AUTOTHROTTLE_TARGET_CONCURRENCY = 2.0
 LOGSTATS_INTERVAL = 20
 # FEED_EXPORT_BATCH_ITEM_COUNT = 100
 # Crawl responsibly by identifying yourself (and your website) on the user-agent
-#USER_AGENT = "glassdoor_spider (+http://www.yourdomain.com)"
+#USER_AGENT = "linkedin_spider (+http://www.yourdomain.com)"
 FEEDS = {
     "results/items_%(time)s.json": {"format": "jsonl"},
 }
@@ -59,13 +59,13 @@ FEEDS = {
 # Enable or disable spider middlewares
 # See https://docs.scrapy.org/en/latest/topics/spider-middleware.html
 # SPIDER_MIDDLEWARES = {
-#    "glassdoor.middlewares.LoggingDownloaderMiddleware": 543,
+#    "linkedin.middlewares.LoggingDownloaderMiddleware": 543,
 # }
 
 # Enable or disable downloader middlewares
 # See https://docs.scrapy.org/en/latest/topics/downloader-middleware.html
 DOWNLOADER_MIDDLEWARES = {
-    "glassdoor.middlewares.LoggingDownloaderMiddleware": 1000,
+    "linkedin.middlewares.LoggingDownloaderMiddleware": 1000,
 }
 REQUEST_RESPONSE_DEBUG = False
 REQUEST_RESPONSE_BODY_DEBUG = False
@@ -78,7 +78,7 @@ REQUEST_RESPONSE_BODY_DEBUG = False
 # Configure item pipelines
 # See https://docs.scrapy.org/en/latest/topics/item-pipeline.html
 # ITEM_PIPELINES = {
-#     "glassdoor_spider.lib.pipelines.ResultsDirPipeline": 300,
+#     "linkedin_spider.lib.pipelines.ResultsDirPipeline": 300,
 # }
 
 

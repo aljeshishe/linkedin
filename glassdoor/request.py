@@ -6,12 +6,12 @@ import attr
 import jsonpath_ng
 import scrapy
 
-from glassdoor import constants, utils, middlewares
-from glassdoor.state import State
+from linkedin import constants, utils, middlewares
+from linkedin.state import State
 
 log = logging.getLogger(__name__)
 
-URL = "https://www.glassdoor.com/graph"
+URL = "https://www.linkedin.com/graph"
 MAX_PAGE = 999
 
 class RequestBase(scrapy.Request):
@@ -28,7 +28,7 @@ class RequestBase(scrapy.Request):
 class GetCsrfRequest(RequestBase):
     state: State
     def __attrs_post_init__(self):
-        url = "https://www.glassdoor.com/Reviews/index.htm?overall_rating_low=4&page=1&filterType=RATING_OVERALL"
+        url = "https://www.linkedin.com/Reviews/index.htm?overall_rating_low=4&page=1&filterType=RATING_OVERALL"
         super().__init__(url=url, callback=self.parse, errback=middlewares.errback)
 
     def parse(self, response: scrapy.http.Response):
@@ -99,7 +99,7 @@ class GetInfosRequest(RequestBase):
         data = [{
             "operationName": "ExplorerEmployerResultsGraphQuery",
             "variables": {
-                "domain": "glassdoor.com",
+                "domain": "linkedin.com",
                 "id": id,
             },
             "query": "query ExplorerEmployerResultsGraphQuery($domain: String, $employerProfileId: Int, $gdId: String, $id: Int!, $ip: String, $locale: String, $locationId: Int, $locationType: String, $shortName: String, $userId: Int) {\n  EmployerJobs: employerJobsInfo(\n    context: {domain: $domain, gdId: $gdId, ip: $ip, locale: $locale, userId: $userId}\n    employer: {id: $id, name: $shortName}\n  ) {\n    eiJobsUrl\n    jobsCount\n    __typename\n  }\n  EmployerLocations: employerOfficeLocation(\n    context: {domain: $domain, gdId: $gdId, ip: $ip, locale: $locale, userId: $userId}\n    employer: {id: $id, name: $shortName}\n    locationId: $locationId\n    locationType: $locationType\n  ) {\n    eiOfficesLocationUrl\n    officeAddresses {\n      addressLine1\n      addressLine2\n      administrativeAreaName1\n      cityName\n      id\n      officeLocationId\n      __typename\n    }\n    __typename\n  }\n  EmployerReviews: employerReviews(\n    context: {domain: $domain, gdId: $gdId, ip: $ip, locale: $locale, userId: $userId}\n    employer: {id: $id}\n    dynamicProfileId: $employerProfileId\n  ) {\n    ...EmployerReviewsFragment\n    __typename\n  }\n  EmployerSalary: salariesByEmployer(\n    context: {domain: $domain, gdId: $gdId, ip: $ip, locale: $locale, userId: $userId}\n    employer: {id: $id}\n  ) {\n    salaryCount\n    __typename\n  }\n}\n\nfragment EmployerReviewsFragment on EmployerReviews {\n  allReviewsCount\n  employer {\n    headquarters\n    id\n    links {\n      overviewUrl\n      reviewsUrl\n      salariesUrl\n      __typename\n    }\n    overview {\n      description\n      __typename\n    }\n    primaryIndustry {\n      industryId\n      __typename\n    }\n    shortName\n    sizeCategory\n    squareLogoUrl\n    __typename\n  }\n  ratings {\n    overallRating\n    careerOpportunitiesRating\n    compensationAndBenefitsRating\n    cultureAndValuesRating\n    diversityAndInclusionRating\n    seniorManagementRating\n    workLifeBalanceRating\n    __typename\n  }\n  __typename\n}\n"

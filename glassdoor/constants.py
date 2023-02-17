@@ -1,17 +1,17 @@
 import email
 
-headers_str = """Host: www.glassdoor.com
+headers_str = """Host: www.linkedin.com
 User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:109.0) Gecko/20100101 Firefox/109.0
 Accept: */*
 Accept-Language: en-GB,en;q=0.5
 Accept-Encoding: gzip, deflate, br
 Content-Type: application/json
 Content-Length: 120
-Referer: https://www.glassdoor.com/
+Referer: https://www.linkedin.com/
 gd-csrf-token: cI7XzVIYLJC7Cfj0zpgzVg:2xEMjNzFCkilPu5Z0nkj3cal48OAqj_lGDhQbrC4iOKCr57uU7sih8Pv6F-QQLNxJaHPhytxqIQwYc_JvGypdA:iF0MKftd4aTOtGb1nNWGoKu66OYIUItbnKVTS0LzTeQ
 apollographql-client-name: gd-header
 apollographql-client-version: 1.0
-Origin: https://www.glassdoor.com
+Origin: https://www.linkedin.com
 Sec-Fetch-Dest: empty
 Sec-Fetch-Mode: cors
 Sec-Fetch-Site: same-origin

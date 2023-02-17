@@ -1,4 +1,4 @@
-from glassdoor import constants
+from linkedin import constants
 
 
 class State:

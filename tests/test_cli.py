@@ -5,7 +5,7 @@ import pytest
 from click.testing import CliRunner
 from expecter import expect
 
-from glassdoor.cli import main
+from linkedin.cli import main
 
 
 @pytest.fixture
